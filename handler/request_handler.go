@@ -1,11 +1,11 @@
 package handler
 
 import (
+	"SimpleGoService/storage"
+	"SimpleGoService/structs"
 	"encoding/json"
 	"io/ioutil"
 	"log"
-	"my_first_service/storage"
-	"my_first_service/structs"
 	"net/http"
 )
 

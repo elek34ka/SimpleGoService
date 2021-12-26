@@ -1,6 +1,6 @@
 package storage
 
-import "my_first_service/structs"
+import "SimpleGoService/structs"
 
 var store structs.MessageList
 var curMaxId = 1
@@ -29,6 +29,6 @@ func Delete(id int) structs.Message {
 	if ind != -1 {
 		store = append(store[:ind], store[ind+1:]...)
 	}
-	
+
 	return message
 }

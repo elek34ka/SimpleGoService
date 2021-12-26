@@ -1,10 +1,10 @@
 package main
 
 import (
+	"SimpleGoService/handler"
+	"SimpleGoService/storage"
+	"SimpleGoService/structs"
 	"log"
-	"my_first_service/handler"
-	"my_first_service/storage"
-	"my_first_service/structs"
 	"net/http"
 	"strconv"
 )
