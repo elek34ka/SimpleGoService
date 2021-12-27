@@ -13,10 +13,9 @@ CREATE TABLE `groups` (
     PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS userInGroup;
-CREATE TABLE userInGroup (
-        id INT AUTO_INCREMENT NOT NULL,
+DROP TABLE IF EXISTS user_in_group;
+CREATE TABLE user_in_group (
         user_id INT NOT NULL REFERENCES users(id),
         group_id INT NOT NULL REFERENCES `groups`(id),
-        PRIMARY KEY (id)
+        UNIQUE (user_id, group_id)
 );

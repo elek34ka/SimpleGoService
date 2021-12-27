@@ -3,6 +3,7 @@ package handler
 import (
 	"SimpleGoService/handler/groupsHandler"
 	"SimpleGoService/handler/usersHandler"
+	"SimpleGoService/handler/usersInGroupHandler"
 	"log"
 	"net/http"
 )
@@ -15,7 +16,22 @@ func HandleError(w http.ResponseWriter, err string) {
 func CommonHandler() {
 	http.HandleFunc("/users", UsersHandler)
 	http.HandleFunc("/groups", GroupsHandler)
+	http.HandleFunc("/add", UsersInGroupHandler)
 	http.HandleFunc("/", HandleRequest)
+}
+
+func UsersInGroupHandler(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet:
+		usersInGroupHandler.Get(w, r)
+		break
+	case http.MethodPost:
+		usersInGroupHandler.Add(w, r)
+		break
+	default:
+		HandleRequest(w, r)
+		break
+	}
 }
 
 func UsersHandler(w http.ResponseWriter, r *http.Request) {
