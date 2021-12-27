@@ -39,7 +39,7 @@ func albumsByArtist(name string) ([]Album, error) {
 	return albums, nil
 }
 
-func Run() {
+func OpenDB() {
 	cfg := mysql.Config{
 		User:   "root",
 		Passwd: "",
@@ -59,6 +59,10 @@ func Run() {
 		log.Fatal(pingErr)
 	}
 	fmt.Println("Connected!")
+}
+
+func Run() {
+	OpenDB()
 
 	albums, err := albumsByArtist("John Coltrane")
 	if err != nil {

@@ -1,16 +1,22 @@
-DROP TABLE IF EXISTS album;
-CREATE TABLE album (
-                       id         INT AUTO_INCREMENT NOT NULL,
-                       title      VARCHAR(128) NOT NULL,
-                       artist     VARCHAR(255) NOT NULL,
-                       price      DECIMAL(5,2) NOT NULL,
-                       PRIMARY KEY (`id`)
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INT AUTO_INCREMENT NOT NULL,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    debt INT NOT NULL,
+    PRIMARY KEY (id)
 );
 
-INSERT INTO album
-(title, artist, price)
-VALUES
-    ('Blue Train', 'John Coltrane', 56.99),
-    ('Giant Steps', 'John Coltrane', 63.99),
-    ('Jeru', 'Gerry Mulligan', 17.99),
-    ('Sarah Vaughan', 'Sarah Vaughan', 34.98);
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE `groups` (
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS userInGroup;
+CREATE TABLE userInGroup (
+        id INT AUTO_INCREMENT NOT NULL,
+        user_id INT NOT NULL REFERENCES users(id),
+        group_id INT NOT NULL REFERENCES `groups`(id),
+        PRIMARY KEY (id)
+);
